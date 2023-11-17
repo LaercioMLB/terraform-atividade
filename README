@@ -1,0 +1,48 @@
+# Configuração e Uso do Terraform para criar uma VPC no AWS
+
+Este repositório contém código Terraform para criar uma VPC na AWS. Siga os passos abaixo para configurar e executar o Terraform.
+
+## Pré-requisitos
+
+1. **Conta AWS:**
+   - Você precisa ter uma conta AWS. Se não tiver uma, crie uma em [AWS Signup](https://aws.amazon.com/).
+
+2. **Chaves de Acesso da AWS:**
+   - Crie uma chave de acesso no [Console de Gerenciamento da AWS](https://console.aws.amazon.com/iam/home#/users).
+   - Certifique-se de conceder as permissões necessárias, como AmazonVPCFullAccess.
+
+3. **Instalação do Terraform:**
+   - Faça o download e instale o Terraform a partir do [site oficial](https://www.terraform.io/downloads.html).
+
+## Configuração do Ambiente
+
+1. **Configuração das Credenciais da AWS:**
+   - Configure suas credenciais AWS usando variáveis de ambiente ou arquivos de configuração. Veja [Configuração das Credenciais AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
+2. **Arquivo de Variáveis do Terraform:**
+   - Crie um arquivo chamado `terraform.tfvars` e forneça os valores necessários para as variáveis, como `vpc_block`, `public_subnet01_block`, etc. Exemplo:
+     ```hcl
+     vpc_block = "192.168.0.0/16"
+     public_subnet01_block = "192.168.0.0/18"
+     public_subnet02_block = "192.168.64.0/18"
+     private_subnet01_block = "192.168.128.0/18"
+     private_subnet02_block = "192.168.192.0/18"
+     ```
+
+## Executando o Terraform
+
+1. **Inicialização do Terraform:**
+   - Execute o comando `terraform init` para inicializar o diretório de trabalho.
+
+2. **Verificação das Mudanças Planejadas:**
+   - Execute o comando `terraform plan` para ver as alterações que o Terraform planeja fazer.
+
+3. **Aplicação das Mudanças:**
+   - Execute o comando `terraform apply` para aplicar as alterações planejadas. Confirme com "yes" quando solicitado.
+
+4. **Destruindo a Infraestrutura:**
+   - Se precisar remover a infraestrutura, execute o comando `terraform destroy`. Confirme com "yes" quando solicitado.
+
+**Nota:** Certifique-se de entender as alterações planejadas antes de aplicá-las. O Terraform pode criar, modificar ou excluir recursos na AWS.
+
+Para mais informações sobre o Terraform, consulte a [documentação oficial](https://www.terraform.io/docs/index.html).
